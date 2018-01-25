@@ -9,6 +9,7 @@ import (
 
 	"github.com/hwgo/pher/httperr"
 	"github.com/hwgo/pher/log"
+	"github.com/hwgo/pher/metrics"
 	"github.com/hwgo/pher/tracing"
 
 	"github.com/hwgo/customer"
@@ -22,8 +23,10 @@ type Server struct {
 	bestETA  *bestETA
 }
 
-// NewServer creates a new frontend.Server
-func NewServer(hostPort string, tracer opentracing.Tracer, logger log.Factory) *Server {
+func NewServer(name string, hostPort string) *Server {
+	logger := log.Service(name)
+	tracer := tracing.Init(name, metrics.Namespace(name, nil), logger)
+
 	return &Server{
 		hostPort: hostPort,
 		tracer:   tracer,
@@ -32,7 +35,6 @@ func NewServer(hostPort string, tracer opentracing.Tracer, logger log.Factory) *
 	}
 }
 
-// Run starts the frontend server
 func (s *Server) Run() error {
 	mux := s.createServeMux()
 	s.logger.Bg().Info("Starting", zap.String("address", "http://"+s.hostPort))
@@ -65,13 +67,7 @@ func (s *Server) dispatch(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	customerClient := customer.NewClient(
-		"customer_client",
-		"127.0.0.1",
-		50052,
-		s.tracer,
-		s.logger,
-	)
+	customerClient := customer.NewClient(s.tracer, s.logger)
 	defer customerClient.Close()
 
 	customerClient.LoggerFactory().For(ctx).Info("xxoo @ frontend")

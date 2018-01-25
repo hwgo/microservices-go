@@ -7,6 +7,10 @@ import (
 	"strconv"
 )
 
+func GetString(key string) string {
+	return viper.GetString(key)
+}
+
 func GetEndpoint(prefix string) string {
 	bind := viper.Get(prefix + ".bind")
 	port := viper.Get(prefix + ".port")

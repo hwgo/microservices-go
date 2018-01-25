@@ -33,6 +33,10 @@ func NewFactory(logger *zap.Logger) Factory {
 	return Factory{logger: logger}
 }
 
+func Service(name string) Factory {
+	return NewFactory(DefaultLogger.With(zap.String("service", name)))
+}
+
 // Bg creates a context-unaware logger.
 func (b Factory) Bg() Logger {
 	return logger{logger: b.logger}

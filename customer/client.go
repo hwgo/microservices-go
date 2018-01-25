@@ -9,6 +9,7 @@ import (
 	"github.com/hwgo/pher/log"
 	"github.com/hwgo/pher/wgrpc"
 
+	"github.com/hwgo/config"
 	"github.com/hwgo/customer/proto"
 )
 
@@ -17,15 +18,10 @@ type Client struct {
 	client proto.CustomerClient
 }
 
-func NewClient(name string, host string, port int, tracer opentracing.Tracer, logger log.Factory) *Client {
-	ct := wgrpc.NewClient(host, port, tracer, logger)
-	c := proto.NewCustomerClient(ct.Conn())
+func NewClient(tracer opentracing.Tracer, logger log.Factory) *Client {
+	hostport := config.GetEndpoint("customer")
 
-	return &Client{ct, c}
-}
-
-func NewClient2(name string, host string, port int) *Client {
-	ct := wgrpc.NewClientWithTracing(name, host, port)
+	ct := wgrpc.NewClient(hostport, tracer, logger)
 	c := proto.NewCustomerClient(ct.Conn())
 
 	return &Client{ct, c}
