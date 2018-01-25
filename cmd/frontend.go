@@ -7,11 +7,10 @@ import (
 var frontendCmd *ServerCommand
 
 func init() {
-	name := "frontend"
 	frontendCmd = NewServerCommand(
-		name,
+		frontend.ServiceName,
 		func(endpoint string) error {
-			server := frontend.NewServer(name, endpoint)
+			server := frontend.NewServer(endpoint)
 			return server.Run()
 		},
 	)

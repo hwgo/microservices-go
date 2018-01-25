@@ -14,7 +14,7 @@ var allCmd = &cobra.Command{
 		// go greeterCmd.RunE(greeterCmd, args)
 		// go greeterClientCmd.RunE(greeterClientCmd, args)
 		// go customerCmd.RunE(customerCmd, args)
-		go driverCmd.RunE(driverCmd, args)
+		go driverCmd.RunE(args)
 		// go routeCmd.RunE(routeCmd, args)
 		frontendCmd.RunE(args)
 	},

@@ -23,9 +23,9 @@ type Server struct {
 	bestETA  *bestETA
 }
 
-func NewServer(name string, hostPort string) *Server {
-	logger := log.Service(name)
-	tracer := tracing.Init(name, metrics.Namespace(name, nil), logger)
+func NewServer(hostPort string) *Server {
+	logger := log.Service(ServiceName)
+	tracer := tracing.Init(ServiceName, metrics.Namespace(ServiceName, nil), logger)
 
 	return &Server{
 		hostPort: hostPort,
