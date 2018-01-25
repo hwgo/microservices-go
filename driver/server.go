@@ -7,7 +7,7 @@ import (
 	"go.uber.org/zap"
 
 	"github.com/hwgo/pher/log"
-	pm "github.com/hwgo/pher/metrics"
+	"github.com/hwgo/pher/metrics"
 	"github.com/hwgo/pher/tracing"
 
 	"github.com/hwgo/driver/thrift-gen/driver"
@@ -25,8 +25,8 @@ type Server struct {
 
 func NewServer(hostPort string) *Server {
 	logger := log.Service(ServiceName)
-	tracer := tracing.Init(ServiceName, pm.Namespace(ServiceName, nil), logger)
-	metricsFactory := pm.DefaultMetricsFactory()
+	tracer := tracing.Init(ServiceName, metrics.Namespace(ServiceName, nil), logger)
+	metricsFactory := metrics.DefaultMetricsFactory()
 
 	channelOpts := &tchannel.ChannelOptions{
 		Tracer: tracer,

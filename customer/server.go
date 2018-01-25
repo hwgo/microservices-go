@@ -4,12 +4,11 @@ package customer
 
 import (
 	"golang.org/x/net/context"
-	"time"
 
-	// "github.com/hwgo/pher/delay"
+	"github.com/hwgo/pher/delay"
 	"github.com/hwgo/pher/wgrpc"
 
-	// "github.com/hwgo/config"
+	"github.com/hwgo/config"
 	"github.com/hwgo/customer/proto"
 )
 
@@ -21,7 +20,7 @@ type customerServer struct {
 func (cs *customerServer) Get(ctx context.Context, cr *proto.CustomerRequest) (*proto.CustomerReply, error) {
 	cs.server.LogFactory.For(ctx).Info("Get......Foo")
 	// simulate RPC delay
-	time.Sleep(7 * time.Millisecond)
+	delay.Sleep(config.RedisGetDelay, config.RedisGetDelayStdDev)
 	return &proto.CustomerReply{
 			Id:       "218",
 			Name:     "Tom",
