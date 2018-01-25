@@ -16,22 +16,25 @@ import (
 )
 
 type Server struct {
-	hostPort   string
-	tracer     opentracing.Tracer
-	logger     log.Factory
+	Name     string
+	Endpoint string
+
+	LogFactory log.Factory
+	Logger     log.Logger
+	Tracer     opentracing.Tracer
+
 	GrpcServer *grpc.Server
 }
 
 func (s *Server) Run() error {
-	bg := s.logger.Bg()
-	lis, err := net.Listen("tcp", s.hostPort)
+	lis, err := net.Listen("tcp", s.Endpoint)
 
 	if err != nil {
-		bg.Fatal("Unable to start server", zap.Error(err))
+		s.Logger.Fatal("Unable to start server", zap.Error(err))
 		return err
 	}
 
-	bg.Info("Starting", zap.String("address", "tcp://"+s.hostPort))
+	s.Logger.Info("Starting", zap.String("address", "tcp://"+s.Endpoint))
 	return s.GrpcServer.Serve(lis)
 }
 
@@ -40,9 +43,12 @@ func NewServer(name string, hostPort string) *Server {
 	tracer := tracing.Init(name, metrics.Namespace(name, nil), logger)
 
 	return &Server{
-		hostPort:   hostPort,
-		tracer:     tracer,
-		logger:     logger,
+		Name:     name,
+		Endpoint: hostPort,
+
+		LogFactory: logger,
+		Logger:     logger.Bg(),
+		Tracer:     tracer,
 		GrpcServer: newGrpcServer(tracer),
 	}
 }

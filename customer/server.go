@@ -13,9 +13,13 @@ import (
 	"github.com/hwgo/customer/proto"
 )
 
-type customerServer struct{}
+type customerServer struct {
+	name   string
+	server *wgrpc.Server
+}
 
-func (s *customerServer) Get(context.Context, *proto.CustomerRequest) (*proto.CustomerReply, error) {
+func (cs *customerServer) Get(ctx context.Context, cr *proto.CustomerRequest) (*proto.CustomerReply, error) {
+	cs.server.LogFactory.For(ctx).Info("Get......Foo")
 	// simulate RPC delay
 	time.Sleep(7 * time.Millisecond)
 	return &proto.CustomerReply{
@@ -26,8 +30,14 @@ func (s *customerServer) Get(context.Context, *proto.CustomerRequest) (*proto.Cu
 		nil
 }
 
-func NewServer(name string, hostPort string) *wgrpc.Server {
-	s := wgrpc.NewServer(name, hostPort)
-	proto.RegisterCustomerServer(s.GrpcServer, &customerServer{})
+func NewServer(hostPort string) *wgrpc.Server {
+	s := wgrpc.NewServer(ServiceName, hostPort)
+
+	cs := &customerServer{
+		name:   ServiceName,
+		server: s,
+	}
+
+	proto.RegisterCustomerServer(s.GrpcServer, cs)
 	return s
 }

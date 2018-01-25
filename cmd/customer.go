@@ -7,11 +7,10 @@ import (
 var customerCmd *ServerCommand
 
 func init() {
-	name := "customer"
 	customerCmd = NewServerCommand(
-		name,
+		customer.ServiceName,
 		func(endpoint string) error {
-			server := customer.NewServer(name, endpoint)
+			server := customer.NewServer(endpoint)
 			return server.Run()
 		},
 	)

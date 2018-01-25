@@ -19,7 +19,7 @@ type Client struct {
 }
 
 func NewClient(tracer opentracing.Tracer, logger log.Factory) *Client {
-	hostport := config.GetEndpoint("customer")
+	hostport := config.GetEndpoint(ServiceName)
 
 	ct := wgrpc.NewClient(hostport, tracer, logger)
 	c := proto.NewCustomerClient(ct.Conn())
