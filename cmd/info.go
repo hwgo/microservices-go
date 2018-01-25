@@ -7,7 +7,7 @@ import (
 var infoCmd = NewServerCommand(
 	"info",
 	func(e string) error {
-		fmt.Printf("args: %#v", e)
+		fmt.Printf("endpoint: %#v", e)
 		return nil
 	},
 )
