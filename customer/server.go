@@ -27,7 +27,7 @@ func (s *customerServer) Get(context.Context, *proto.CustomerRequest) (*proto.Cu
 }
 
 func NewServer(name string, hostPort string) *wgrpc.Server {
-	s := wgrpc.NewServerWithTracing(name, hostPort)
-	proto.RegisterCustomerServer(s.Gs, &customerServer{})
+	s := wgrpc.NewServer(name, hostPort)
+	proto.RegisterCustomerServer(s.GrpcServer, &customerServer{})
 	return s
 }

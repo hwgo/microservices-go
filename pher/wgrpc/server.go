@@ -16,13 +16,12 @@ import (
 )
 
 type Server struct {
-	hostPort string
-	tracer   opentracing.Tracer
-	logger   log.Factory
-	Gs       *grpc.Server
+	hostPort   string
+	tracer     opentracing.Tracer
+	logger     log.Factory
+	GrpcServer *grpc.Server
 }
 
-// Run starts the Customer server
 func (s *Server) Run() error {
 	bg := s.logger.Bg()
 	lis, err := net.Listen("tcp", s.hostPort)
@@ -33,15 +32,18 @@ func (s *Server) Run() error {
 	}
 
 	bg.Info("Starting", zap.String("address", "tcp://"+s.hostPort))
-	return s.Gs.Serve(lis)
+	return s.GrpcServer.Serve(lis)
 }
 
-func NewServer(hostPort string, tracer opentracing.Tracer, logger log.Factory) *Server {
+func NewServer(name string, hostPort string) *Server {
+	logger := log.NewFactory(log.DefaultLogger.With(zap.String("service", name)))
+	tracer := tracing.Init(name, metrics.Namespace(name, nil), logger)
+
 	return &Server{
-		hostPort: hostPort,
-		tracer:   tracer,
-		logger:   logger,
-		Gs:       newGrpcServer(tracer),
+		hostPort:   hostPort,
+		tracer:     tracer,
+		logger:     logger,
+		GrpcServer: newGrpcServer(tracer),
 	}
 }
 
@@ -53,11 +55,4 @@ func newGrpcServer(tracer opentracing.Tracer) *grpc.Server {
 	reflection.Register(s)
 
 	return s
-}
-
-func NewServerWithTracing(name string, hostPort string) *Server {
-	logger := log.NewFactory(log.DefaultLogger.With(zap.String("service", name)))
-	tracer := tracing.Init(name, metrics.Namespace(name, nil), logger)
-
-	return NewServer(hostPort, tracer, logger)
 }
