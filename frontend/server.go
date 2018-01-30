@@ -2,9 +2,11 @@ package frontend
 
 import (
 	"encoding/json"
+	"expvar"
 	"net/http"
 
 	"github.com/opentracing/opentracing-go"
+	"github.com/prometheus/client_golang/prometheus"
 	"go.uber.org/zap"
 
 	"github.com/hwgo/pher/httperr"
@@ -44,6 +46,8 @@ func (s *Server) Run() error {
 func (s *Server) createServeMux() http.Handler {
 	mux := tracing.NewServeMux(s.tracer)
 	mux.Handle("/", http.HandlerFunc(s.home))
+	mux.Handle("/debug/vars", expvar.Handler()) // expvar
+	mux.Handle("/metrics", prometheus.Handler())
 	mux.Handle("/dispatch", http.HandlerFunc(s.dispatch))
 	return mux
 }

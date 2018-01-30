@@ -13,7 +13,8 @@ var (
 )
 
 func init() {
-	defaultBackend = "expvar"
+	// defaultBackend = "expvar"
+	defaultBackend = "prometheus"
 	initMetrics(defaultBackend)
 }
 
