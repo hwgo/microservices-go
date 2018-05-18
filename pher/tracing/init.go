@@ -23,6 +23,7 @@ func Init(serviceName string, metricsFactory metrics.Factory, logger log.Factory
 		Reporter: &config.ReporterConfig{
 			LogSpans:            false,
 			BufferFlushInterval: 1 * time.Second,
+			LocalAgentHostPort:  "jaeger.xw.uops.top:6831",
 		},
 	}
 	tracer, _, err := cfg.New(

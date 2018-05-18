@@ -2,10 +2,99 @@
 
 
 [[projects]]
+  name = "github.com/VividCortex/gohistogram"
+  packages = ["."]
+  revision = "51564d9861991fb0ad0f531c99ef602d0f9866e6"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/apache/thrift"
+  packages = ["lib/go/thrift"]
+  revision = "327ebb6c2b6df8bf075da02ef45a2a034e9b79ba"
+  version = "0.11.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/beorn7/perks"
+  packages = ["quantile"]
+  revision = "4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/codahale/hdrhistogram"
+  packages = ["."]
+  revision = "3a0bb77429bd3a61596f5e8a3172445844342120"
+
+[[projects]]
+  name = "github.com/davecgh/go-spew"
+  packages = ["spew"]
+  revision = "346938d642f2ec3594ed81d874461961cd0faa76"
+  version = "v1.1.0"
+
+[[projects]]
+  name = "github.com/fatedier/beego"
+  packages = ["logs"]
+  revision = "90999717dda6193c6f970eec52e289b0a9e74998"
+  version = "v1.7.2"
+
+[[projects]]
+  name = "github.com/fatedier/frp"
+  packages = [
+    "utils/errors",
+    "utils/log",
+    "utils/net",
+    "utils/pool"
+  ]
+  revision = "456ce09061bea765f511983b835faf6f6b44c91d"
+  version = "v0.16.0"
+
+[[projects]]
+  branch = "frp"
+  name = "github.com/fatedier/kcp-go"
+  packages = ["."]
+  revision = "cd167d2f15f451b0f33780ce862fca97adc0331e"
+
+[[projects]]
   name = "github.com/fsnotify/fsnotify"
   packages = ["."]
   revision = "c2828203cd70a50dcccfb2761f8b1f8ceef9a8e9"
   version = "v1.4.7"
+
+[[projects]]
+  name = "github.com/go-kit/kit"
+  packages = [
+    "metrics",
+    "metrics/expvar",
+    "metrics/generic",
+    "metrics/internal/lv"
+  ]
+  revision = "4dc7be5d2d12881735283bcab7352178e190fc71"
+  version = "v0.6.0"
+
+[[projects]]
+  name = "github.com/gogo/protobuf"
+  packages = ["proto"]
+  revision = "342cbe0a04158f6dcb03ca0079991a51a4248c02"
+  version = "v0.5"
+
+[[projects]]
+  name = "github.com/golang/protobuf"
+  packages = [
+    "proto",
+    "protoc-gen-go/descriptor",
+    "ptypes",
+    "ptypes/any",
+    "ptypes/duration",
+    "ptypes/timestamp"
+  ]
+  revision = "925541529c1fa6821df4e44ce2723319eb2be768"
+  version = "v1.0.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/golang/snappy"
+  packages = ["."]
+  revision = "553a641470496b2327abcac10b36396bd98e45c9"
 
 [[projects]]
   branch = "master"
@@ -30,10 +119,34 @@
   version = "v1.0"
 
 [[projects]]
+  name = "github.com/julienschmidt/httprouter"
+  packages = ["."]
+  revision = "8c199fb6259ffc1af525cc3ad52ee60ba8359669"
+  version = "v1.1"
+
+[[projects]]
+  name = "github.com/klauspost/cpuid"
+  packages = ["."]
+  revision = "ae7887de9fa5d2db4eaa8174a7eff2c1ac00f2da"
+  version = "v1.1"
+
+[[projects]]
+  name = "github.com/klauspost/reedsolomon"
+  packages = ["."]
+  revision = "6bb6130ff6a76a904c1841707d65603aec9cc288"
+  version = "v1.6"
+
+[[projects]]
   name = "github.com/magiconair/properties"
   packages = ["."]
   revision = "d419a98cdbed11a922bf76f257b7c4be79b50e73"
   version = "v1.7.4"
+
+[[projects]]
+  name = "github.com/matttproud/golang_protobuf_extensions"
+  packages = ["pbutil"]
+  revision = "3247c84500bff8d9fb6d579d800f20b3e091582c"
+  version = "v1.0.0"
 
 [[projects]]
   branch = "master"
@@ -48,10 +161,72 @@
   revision = "b4575eea38cca1123ec2dc90c26529b5c5acfcff"
 
 [[projects]]
+  branch = "master"
+  name = "github.com/opentracing-contrib/go-stdlib"
+  packages = ["nethttp"]
+  revision = "b1a47cfbdd7543e70e9ef3e73d0802ad306cc1cc"
+
+[[projects]]
+  name = "github.com/opentracing/opentracing-go"
+  packages = [
+    ".",
+    "ext",
+    "log",
+    "mocktracer"
+  ]
+  revision = "1949ddbfd147afd4d964a9f00b24eb291e0e7c38"
+  version = "v1.0.2"
+
+[[projects]]
   name = "github.com/pelletier/go-toml"
   packages = ["."]
   revision = "acdc4509485b587f5e675510c4f2c63e90ff68a8"
   version = "v1.1.0"
+
+[[projects]]
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
+
+[[projects]]
+  name = "github.com/pmezard/go-difflib"
+  packages = ["difflib"]
+  revision = "792786c7400a136282c1664665ae0a8db921c6c2"
+  version = "v1.0.0"
+
+[[projects]]
+  name = "github.com/prometheus/client_golang"
+  packages = ["prometheus"]
+  revision = "c5b7fccd204277076155f10851dad72b76a49317"
+  version = "v0.8.0"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/prometheus/client_model"
+  packages = ["go"]
+  revision = "99fa1f4be8e564e8a6b613da7fa6f46c9edafc6c"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/prometheus/common"
+  packages = [
+    "expfmt",
+    "internal/bitbucket.org/ww/goautoneg",
+    "model"
+  ]
+  revision = "89604d197083d4781071d3c65855d24ecfb0a563"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/prometheus/procfs"
+  packages = [
+    ".",
+    "internal/util",
+    "nfs",
+    "xfs"
+  ]
+  revision = "cb4147076ac75738c9a7d279075a253c0cc5acbd"
 
 [[projects]]
   name = "github.com/spf13/afero"
@@ -93,6 +268,154 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/stretchr/testify"
+  packages = ["assert"]
+  revision = "12b6f73e6084dad08a7c6e575284b177ecafbc71"
+  version = "v1.2.1"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/templexxx/cpufeat"
+  packages = ["."]
+  revision = "3794dfbfb04749f896b521032f69383f24c3687e"
+
+[[projects]]
+  name = "github.com/templexxx/reedsolomon"
+  packages = ["."]
+  revision = "5e06b81a1c7628d9c8d4fb7c3c4e401e37db39b4"
+  version = "0.1.1"
+
+[[projects]]
+  name = "github.com/templexxx/xor"
+  packages = ["."]
+  revision = "0af8e873c554da75f37f2049cdffda804533d44c"
+  version = "0.1.2"
+
+[[projects]]
+  name = "github.com/tjfoc/gmsm"
+  packages = ["sm4"]
+  revision = "98aa888b79d8de04afe0fccf45ed10594efc858b"
+  version = "v1.1"
+
+[[projects]]
+  name = "github.com/uber-go/atomic"
+  packages = ["."]
+  revision = "8474b86a5a6f79c443ce4b2992817ff32cf208b8"
+  version = "v1.3.1"
+
+[[projects]]
+  name = "github.com/uber/jaeger-client-go"
+  packages = [
+    ".",
+    "config",
+    "internal/baggage",
+    "internal/baggage/remote",
+    "internal/spanlog",
+    "log",
+    "rpcmetrics",
+    "thrift-gen/agent",
+    "thrift-gen/baggage",
+    "thrift-gen/jaeger",
+    "thrift-gen/sampling",
+    "thrift-gen/zipkincore",
+    "utils"
+  ]
+  revision = "f54d8ece0a66e3db6a9247e946eb1e2bd79029ea"
+  version = "v2.11.1"
+
+[[projects]]
+  name = "github.com/uber/jaeger-lib"
+  packages = [
+    "metrics",
+    "metrics/go-kit",
+    "metrics/go-kit/expvar",
+    "metrics/prometheus"
+  ]
+  revision = "5519f3beabf28707fca8d3f47f9cff87dad48d96"
+  version = "v1.3.0"
+
+[[projects]]
+  name = "github.com/uber/tchannel-go"
+  packages = [
+    ".",
+    "internal/argreader",
+    "relay",
+    "thrift",
+    "thrift/gen-go/meta",
+    "tnet",
+    "tos",
+    "trand",
+    "typed"
+  ]
+  revision = "acd4eb54c11531814d9cd0344fdc53bebe86ab12"
+  version = "v1.9.0"
+
+[[projects]]
+  name = "github.com/xtaci/kcp-go"
+  packages = ["."]
+  revision = "86eebd5cadb519b7c9306082c7eb3bcee2c49a7b"
+  version = "v3.23"
+
+[[projects]]
+  name = "go.uber.org/atomic"
+  packages = ["."]
+  revision = "54f72d32435d760d5604f17a82e2435b28dc4ba5"
+  version = "v1.3.0"
+
+[[projects]]
+  name = "go.uber.org/multierr"
+  packages = ["."]
+  revision = "3c4937480c32f4c13a875a1829af76c98ca3d40a"
+  version = "v1.1.0"
+
+[[projects]]
+  name = "go.uber.org/zap"
+  packages = [
+    ".",
+    "buffer",
+    "internal/bufferpool",
+    "internal/color",
+    "internal/exit",
+    "zapcore"
+  ]
+  revision = "35aad584952c3e7020db7b839f6b102de6271f89"
+  version = "v1.7.1"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/crypto"
+  packages = [
+    "blowfish",
+    "cast5",
+    "pbkdf2",
+    "salsa20",
+    "salsa20/salsa",
+    "tea",
+    "twofish",
+    "xtea"
+  ]
+  revision = "1875d0a70c90e57f11972aefd42276df65e895b9"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "bpf",
+    "context",
+    "http2",
+    "http2/hpack",
+    "idna",
+    "internal/iana",
+    "internal/socket",
+    "internal/timeseries",
+    "ipv4",
+    "ipv6",
+    "lex/httplex",
+    "trace"
+  ]
+  revision = "309822c5b9b9f80db67f016069a12628d94fad34"
+
+[[projects]]
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
@@ -102,14 +425,59 @@
   branch = "master"
   name = "golang.org/x/text"
   packages = [
+    "collate",
+    "collate/build",
+    "internal/colltab",
     "internal/gen",
+    "internal/tag",
     "internal/triegen",
     "internal/ucd",
+    "language",
+    "secure/bidirule",
     "transform",
+    "unicode/bidi",
     "unicode/cldr",
-    "unicode/norm"
+    "unicode/norm",
+    "unicode/rangetable"
   ]
   revision = "e19ae1496984b1c655b8044a65c0300a3c878dd3"
+
+[[projects]]
+  branch = "master"
+  name = "google.golang.org/genproto"
+  packages = ["googleapis/rpc/status"]
+  revision = "4eb30f4778eed4c258ba66527a0d4f9ec8a36c45"
+
+[[projects]]
+  name = "google.golang.org/grpc"
+  packages = [
+    ".",
+    "balancer",
+    "balancer/base",
+    "balancer/roundrobin",
+    "codes",
+    "connectivity",
+    "credentials",
+    "encoding",
+    "grpclb/grpc_lb_v1/messages",
+    "grpclog",
+    "internal",
+    "keepalive",
+    "metadata",
+    "naming",
+    "peer",
+    "reflection",
+    "reflection/grpc_reflection_v1alpha",
+    "resolver",
+    "resolver/dns",
+    "resolver/passthrough",
+    "stats",
+    "status",
+    "tap",
+    "transport"
+  ]
+  revision = "6b51017f791ae1cfbec89c52efdf444b13b550ef"
+  version = "v1.9.2"
 
 [[projects]]
   branch = "v2"
@@ -120,6 +488,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "bf5b06e0cfa4be2b8501a8001bcf7ab4168ae5dcac4cf9bd58037a8fc37530b7"
+  inputs-digest = "06933e6b44d56c03f1660e8dd5e0bafb309b40c2f12fde1813be5686f5d9c4f3"
   solver-name = "gps-cdcl"
   solver-version = 1

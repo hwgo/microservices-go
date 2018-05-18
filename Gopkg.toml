@@ -25,6 +25,10 @@
   name = "github.com/mitchellh/go-homedir"
 
 [[constraint]]
+  branch = "frp"
+  name = "github.com/fatedier/kcp-go"
+
+[[constraint]]
   name = "github.com/spf13/cobra"
   version = "0.0.1"
 
